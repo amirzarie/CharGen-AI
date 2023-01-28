@@ -23,7 +23,6 @@ app.listen(3000);
 // Routing.
 
 
-
 app.use((req, res) => {
     res.send("404 Error");
 });
