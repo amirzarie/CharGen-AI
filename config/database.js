@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1/chargen-ai', {
+mongoose.connect('mongodb://127.0.0.1/flights', {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
+    useUnifiedTopology: true
 });
 
 const db = mongoose.connection;

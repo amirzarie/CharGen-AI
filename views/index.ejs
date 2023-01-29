@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <form action="/gen" method="POST">
+      <textarea name="prompt" rows="5" class="form-control" placeholder="Describe your character ..." required></textarea>
+      
+      select image size: <br>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" name="size" type="radio" value="256x256" id="defaultCheck1" required>
+        <label class="form-check-label">
+          256 x 256
+        </label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" name="size" type="radio" value="512x512" id="defaultCheck1">
+        <label class="form-check-label">
+          512 x 512
+        </label>
+      </div>
+      
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" name="size" type="radio" value="1024x1024" id="defaultCheck2">
+        <label class="form-check-label">
+          1024 x 1024
+        </label>
+      </div><br>
+      
+      <input type="submit" value="Generate my character">
+  </form>
+
+  <% chars.forEach(function(c) { %>
+    <p class="imgText"><%= c.prompt %></p>
+  <div class="public">
+    <img class="img" src="<%= c.Url %>" alt="<%= c.prompt %>">
+  </div>
+  <hr class="hr hr-blurry" />
+  <% }); %>
+
+  </body>
+</html>

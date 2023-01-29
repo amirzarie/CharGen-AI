@@ -1,0 +1,36 @@
+img {
+    height: 70vh;
+    width: 30vw;
+    border-radius: 10px;
+    filter: drop-shadow(5px 5px 5px grey);
+}
+
+div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+form {
+    margin: 10px;
+    text-align: center;
+}
+
+.public {
+    text-align: center;
+    position: relative;;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    text-align: center;
+}
+
+.imgText {
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 5px;
+}
+

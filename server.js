@@ -1,9 +1,12 @@
+const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override');
 require('./config/database');
+const indexRoute = require('./routes/index');
+const genRoute = require('./routes/gen');
 
 var app = express();
 
@@ -20,11 +23,7 @@ app.use(methodOverride('_method'));
 
 app.listen(3000);
 
-// Routing.
-
-
-app.use((req, res) => {
-    res.send("404 Error");
-});
+app.use('/', indexRoute);
+app.use('/gen', genRoute);
 
 module.exports = app;
