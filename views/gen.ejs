@@ -12,5 +12,17 @@
     <div>
         <img src="<%= char.imageURL %>" alt="<%= char.prompt %>">
     </div>
+
+    <form action="" method="POST">
+        <div>
+            <label>Rate the image (0 to 10)</label>
+            <input type="range" id="rating" name="rating"
+                   min="0" max="10">
+          </div>
+          <div>
+            <textarea name="comment" placeholder="Give us your thoughts on this image ..." rows="3" cols="50"></textarea>
+            </div>
+          <input type="submit" value="Save rating/comment">
+    </form>
 </body>
 </html>

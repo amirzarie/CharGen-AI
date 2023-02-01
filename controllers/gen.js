@@ -34,7 +34,26 @@ function show(req, res, next) {
     });
 };
 
+function saveReview(req, res) {
+    console.log(req.body);
+    console.log(req.params);
+    req.body.rating = Number(req.body.rating);
+    Char.findById(req.params.id, function(err, char) {
+        char.reviews.push(req.body);
+        char.save(function(err) {
+            res.redirect('/');
+        });
+    });
+};
+
+// function saveRating(req, res) {
+//     console.log(req.body);
+//     console.log(req.params);
+//     res.redirect('/');
+// };
+
 module.exports = {
     generate,
-    show
+    show,
+    saveReview
 };
