@@ -46,12 +46,6 @@ function saveReview(req, res) {
     });
 };
 
-// function saveRating(req, res) {
-//     console.log(req.body);
-//     console.log(req.params);
-//     res.redirect('/');
-// };
-
 module.exports = {
     generate,
     show,

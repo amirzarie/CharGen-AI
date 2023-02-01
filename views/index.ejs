@@ -36,7 +36,7 @@
   <!-- <% chars.forEach(function(c) { %>
     <p class="imgText"><%= c.prompt %></p>
   <div class="public">
-    <img class="img" src="<%= c.imageURL %>" alt="<%= c.prompt %>">
+    <a href="/gen/<%= c._id %>"><img class="img" src="<%= c.imageURL %>" alt="<%= c.prompt %>"></a>
   </div>
   <hr class="hr hr-blurry" />
   <% }); %> -->
@@ -46,8 +46,16 @@
   <div class="public">
     <a href="/gen/<%= c._id %>"><img class="img" src="<%= c.imageURL %>" alt="<%= c.prompt %>"></a>
   </div>
-  <hr class="hr hr-blurry" />
+  <div>
+    <% if (c.reviews.length) { %>
+    <% let total = 0; %>
+    <% c.reviews.forEach(function(r) { %>
+      <% total += r.rating %>
+    <% }) %>
+    <p><i>Rating: <%= (total/c.reviews.length).toFixed(1) %></i></p>
+  <% } %>
   <% }); %>
-
+  </div>
+  <hr class="hr hr-blurry" />
   </body>
 </html>
