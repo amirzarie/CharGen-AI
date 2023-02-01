@@ -6,6 +6,7 @@ function index(req, res, next) {
             console.log(err);
             res.redirect('/');
         };
+        
         res.render('index', {
             chars
         });
