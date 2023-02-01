@@ -26,6 +26,15 @@ const generate = async function(req, res) {
     });
 };
 
+function show(req, res, next) {
+    Char.findById(req.params.id, function(err, char) {
+        res.render('gen', {
+            char
+        });
+    });
+};
+
 module.exports = {
-    generate
+    generate,
+    show
 };

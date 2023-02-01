@@ -33,10 +33,18 @@
       <input type="submit" value="Generate my character">
   </form>
 
-  <% chars.forEach(function(c) { %>
+  <!-- <% chars.forEach(function(c) { %>
     <p class="imgText"><%= c.prompt %></p>
   <div class="public">
     <img class="img" src="<%= c.imageURL %>" alt="<%= c.prompt %>">
+  </div>
+  <hr class="hr hr-blurry" />
+  <% }); %> -->
+
+  <% chars.forEach(function(c) { %>
+    <p class="imgText"><%= c.prompt %></p>
+  <div class="public">
+    <a href="/gen/<%= c._id %>"><img class="img" src="<%= c.imageURL %>" alt="<%= c.prompt %>"></a>
   </div>
   <hr class="hr hr-blurry" />
   <% }); %>
