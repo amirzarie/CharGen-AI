@@ -48,3 +48,16 @@ main {
 body {
     text-align: center;
 }
+
+#reviewDiv {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+#imagePrompt {
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    margin-top: 25px;
+}

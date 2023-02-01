@@ -9,13 +9,13 @@
     <title>AI-image</title>
 </head>
 <body>
-    <main>
+    <div id="imagePrompt"><i><%= char.prompt %></i></div>
     <div id="genImgDiv">
         <a href="/"><img src="<%= char.imageURL %>" alt="<%= char.prompt %>"></a>
     </div>
 
     <form action="" method="POST">
-            <label>Rate the image:</label>
+            <label>Rate the image (0-10)</label>
         <div>
             <input type="number" name="rating" min="0" max="10" required>
         </div>
@@ -24,12 +24,36 @@
             </div>
           <input type="submit" value="Save rating/comment">
     </form>
-    <div><strong>Comments:</strong></div>
-    <% if (char.reviews.length) { %>
-        <% char.reviews.forEach(function(c) { %>
-            <div><%= c.comment %></div>
+
+    <div id="reviewDiv">
+        <% let total = 'NA'; %>
+        <% if (char.reviews.length) { %>
+            <% total = 0; %>
+            <% char.reviews.forEach(function(c) { %>
+                <% total += c.rating; %>
+            <% }); %>
+            <% total = (total/char.reviews.length).toFixed(1); %>
+        <% }; %>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"><strong>Comment</strong></th>
+                <th scope="col"><strong>Rating (<%= total %>)</strong></th>
+            </tr>
+        </thead>
+        <% if (char.reviews.length) { %>
+            <% char.reviews.forEach(function(c) { %>
+        <tbody>
+            <tr>
+                <td><%= c.comment %></td>
+                <td><%= c.rating %></td>
+            </tr>
+        </tbody>
         <% }) %>
-    <% } %>
-    </main>
+        <% } %>
+    </table>
+    </div>
+    <hr class="hr hr-blurry" />
 </body>
 </html>
