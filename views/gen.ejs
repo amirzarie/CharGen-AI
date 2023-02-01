@@ -6,23 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Document</title>
+    <title>AI-image</title>
 </head>
 <body>
-    <div>
-        <img src="<%= char.imageURL %>" alt="<%= char.prompt %>">
+    <main>
+    <div id="genImgDiv">
+        <a href="/"><img src="<%= char.imageURL %>" alt="<%= char.prompt %>"></a>
     </div>
 
     <form action="" method="POST">
+            <label>Rate the image:</label>
         <div>
-            <label>Rate the image (0 to 10)</label>
-            <input type="range" id="rating" name="rating"
-                   min="0" max="10">
-          </div>
+            <input type="number" name="rating" min="0" max="10" required>
+        </div>
           <div>
-            <textarea name="comment" placeholder="Give us your thoughts on this image ..." rows="3" cols="50"></textarea>
+            <textarea name="comment" placeholder="Give us your thoughts on this image ..." rows="3" cols="50" required></textarea>
             </div>
           <input type="submit" value="Save rating/comment">
     </form>
+    <div><strong>Comments:</strong></div>
+    <% if (char.reviews.length) { %>
+        <% char.reviews.forEach(function(c) { %>
+            <div><%= c.comment %></div>
+        <% }) %>
+    <% } %>
+    </main>
 </body>
 </html>

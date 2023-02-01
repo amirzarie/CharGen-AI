@@ -4,8 +4,8 @@ require('mongoose-type-url');
 const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
-    rating: { type: Number },
-    comment: { type: String, createdAt: new Date(0) }
+    rating: { type: Number, min: 0, max: 10, required: true },
+    comment: { type: String, createdAt: new Date(0), required: true }
 });
 
 const charSchema = new Schema({

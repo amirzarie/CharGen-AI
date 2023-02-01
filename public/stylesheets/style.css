@@ -24,13 +24,27 @@ form {
     justify-content: center;
 }
 
-body {
-    text-align: center;
-}
-
 .imgText {
     text-align: center;
     margin-top: 35px;
     margin-bottom: 5px;
 }
 
+main {
+    width: 80%;
+    margin: auto;
+}
+
+#userPrompt {
+    width: 60%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+#genImgDiv {
+    margin-top: 25px;
+}
+
+body {
+    text-align: center;
+}
