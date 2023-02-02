@@ -37,6 +37,10 @@ app.listen(3000);
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function(req, res, next) {
+    res.locals.user = req.user;
+    next();
+});
 app.use('/', indexRoute);
 app.use('/gen', genRoute);
 
