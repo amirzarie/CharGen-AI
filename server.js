@@ -7,6 +7,7 @@ const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
 require('./config/database');
+require('./config/passport');
 const indexRoute = require('./routes/index');
 const genRoute = require('./routes/gen');
 
