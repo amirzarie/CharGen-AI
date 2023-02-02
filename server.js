@@ -32,6 +32,9 @@ app.use(methodOverride('_method'));
 
 app.listen(3000);
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', indexRoute);
 app.use('/gen', genRoute);
 
