@@ -9,6 +9,11 @@
   <title>Chargen-AI</title>
   </head>
   <body>
+
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="nav-link login" href="/auth/google">Sign in/up <img src="https://i.imgur.com/FHjYyi0.png"></a>
+    </nav>
+
     <form action="/gen" method="POST">
       <textarea id="userPrompt" name="prompt" rows="5" class="form-control" placeholder="Describe your character ..." required></textarea>
       
