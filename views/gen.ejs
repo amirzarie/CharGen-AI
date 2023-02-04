@@ -10,14 +10,19 @@
 </head>
 <body>
     <div id="imagePrompt"><i><%= char.prompt %></i>
-        <form action="/gen/<%= char.id %>?_method=DELETE" method="POST">
-            <button type="submit" class="btn btn-danger"><strong>&times</strong></button>
-        </form>
     </div>
 
     <div id="genImgDiv">
         <a href="/"><img src="<%= char.imageURL %>" alt="<%= char.prompt %>"></a>
-        
+    </div>
+
+    <div>
+        <form action="/gen/<%= char.id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger"><strong>&times</strong></button>
+        </form>
+        <form action="/" method="GET">
+            <button type="submit" class="btn btn-info"><strong>&#10003</strong></button>
+        </form>
     </div>
 
     <form action="" method="POST">
