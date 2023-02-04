@@ -22,7 +22,7 @@ const generate = async function(req, res) {
     console.log(char);
     char.save(function(err) {
         if (err) return res.send(err);
-        res.redirect('/');
+        res.render('gen', { char });
     });
 };
 
@@ -46,8 +46,14 @@ function saveReview(req, res) {
     });
 };
 
+function deleteChar(req, res) {
+    Char.deleteOne(req.params.id);
+    res.redirect('/');
+};
+
 module.exports = {
     generate,
     show,
-    saveReview
+    saveReview,
+    deleteChar
 };
