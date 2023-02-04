@@ -38,7 +38,8 @@ main {
 #userPrompt {
     width: 60%;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #genImgDiv {

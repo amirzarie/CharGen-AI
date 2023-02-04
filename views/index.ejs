@@ -21,11 +21,10 @@
 
     <% if (user) { %>
       <form action="/gen" method="POST">
-        <textarea id="userPrompt" name="prompt" rows="5" class="form-control" placeholder="Describe your character ..." required></textarea>
-        <br>
-        
+        <textarea id="userPrompt" name="prompt" rows="1" class="form-control" placeholder="Describe your character ..." required></textarea>
         <input type="submit" value="Generate my character">
     </form>
+    <hr class="hr hr-blurry" />
   <% } %>
 
    <% if (user) { %>

@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="imagePrompt"><i><%= char.prompt %></i>
-        <form action="">
+        <form action="/gen/<%= char.id %>?_method=DELETE" method="POST">
             <button type="submit" class="btn btn-danger"><strong>&times</strong></button>
         </form>
     </div>
@@ -28,7 +28,7 @@
           <div>
             <textarea name="comment" placeholder="Give us your thoughts on this image ..." rows="3" cols="50" required></textarea>
             </div>
-          <button type="submit" class="btn btn-success">Save rating/comment</button>
+          <button type="submit" class="btn btn-success">Save review</button>
     </form>
 
     <div id="reviewDiv">

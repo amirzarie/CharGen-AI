@@ -35,8 +35,6 @@ function show(req, res, next) {
 };
 
 function saveReview(req, res) {
-    console.log(req.body);
-    console.log(req.params);
     req.body.rating = Number(req.body.rating);
     Char.findById(req.params.id, function(err, char) {
         char.reviews.push(req.body);
@@ -47,8 +45,12 @@ function saveReview(req, res) {
 };
 
 function deleteChar(req, res) {
-    Char.deleteOne(req.params.id);
-    res.redirect('/');
+    Char.deleteOne({ id: req.params.id}, function(err) {
+        if (err) {
+            return res.redirect('/');
+        };
+        res.redirect('/');
+    });
 };
 
 module.exports = {
