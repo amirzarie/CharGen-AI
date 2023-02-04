@@ -9,9 +9,15 @@
     <title>AI-image</title>
 </head>
 <body>
-    <div id="imagePrompt"><i><%= char.prompt %></i></div>
+    <div id="imagePrompt"><i><%= char.prompt %></i>
+        <form action="">
+            <button type="submit" class="btn btn-danger"><strong>&times</strong></button>
+        </form>
+    </div>
+
     <div id="genImgDiv">
         <a href="/"><img src="<%= char.imageURL %>" alt="<%= char.prompt %>"></a>
+        
     </div>
 
     <form action="" method="POST">
@@ -22,7 +28,7 @@
           <div>
             <textarea name="comment" placeholder="Give us your thoughts on this image ..." rows="3" cols="50" required></textarea>
             </div>
-          <input type="submit" value="Save rating/comment">
+          <button type="submit" class="btn btn-success">Save rating/comment</button>
     </form>
 
     <div id="reviewDiv">
@@ -55,5 +61,6 @@
     </table>
     </div>
     <hr class="hr hr-blurry" />
+    
 </body>
 </html>
