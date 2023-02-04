@@ -11,7 +11,6 @@ const reviewSchema = new Schema({
 const charSchema = new Schema({
     imageURL: { type: String, require, createdAt: new Date(0) },
     prompt: { type: String, require },
-    size: { type: String, require },
     reviews: [reviewSchema]
 });
 
