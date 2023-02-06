@@ -32,7 +32,7 @@ app.use(
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
-app.listen(3000);
+app.listen(process.env.PORT);
 
 app.use(passport.initialize());
 app.use(passport.session());
