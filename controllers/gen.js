@@ -17,19 +17,25 @@ const generate = async function(req, res) {
     });
 
     req.body.imageURL = genImg.data.data[0].url;
+    req.body.creator = req.user;
+    req.body.creatorEmail = req.user.email;
 
     const char = new Char(req.body);
-    console.log(char);
     char.save(function(err) {
         if (err) return res.send(err);
         res.render('gen', { char });
     });
 };
 
+function saveImage(req, res, next) {
+    res.redirect('/');
+};
+
 function show(req, res, next) {
     Char.findById(req.params.id, function(err, char) {
         res.render('gen', {
-            char
+            char,
+            user: req.user
         });
     });
 };
@@ -37,15 +43,17 @@ function show(req, res, next) {
 function saveReview(req, res) {
     req.body.rating = Number(req.body.rating);
     Char.findById(req.params.id, function(err, char) {
-        char.reviews.push(req.body);
+        req.body.reviewer = req.user;
+        req.body.reviewerName = req.user.name;
+        char.reviews.unshift(req.body);
         char.save(function(err) {
             res.redirect('/');
         });
     });
 };
 
-function deleteChar(req, res) {
-    Char.deleteOne({ id: req.params.id}, function(err) {
+function deleteChar(req, res, next) {
+    Char.findOneAndDelete({ "_id": req.params.id}, function(err) {
         if (err) {
             return res.redirect('/');
         };
@@ -53,9 +61,20 @@ function deleteChar(req, res) {
     });
 };
 
+function deleteReview(req, res, next) {
+    console.log("req.params.id: ", req.params.id);
+    console.log("req.user: ", req.user);
+    Char.find({ "_id": req.params.id }, function(err, char) {
+        console.log(char.reviews);
+        res.redirect(`/gen/${req.params.id}`);
+    });
+};
+
 module.exports = {
     generate,
     show,
     saveReview,
-    deleteChar
+    saveImage,
+    deleteChar,
+    deleteReview
 };

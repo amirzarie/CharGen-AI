@@ -16,16 +16,20 @@
         <a href="/"><img src="<%= char.imageURL %>" alt="<%= char.prompt %>"></a>
     </div>
 
-    <div>
-        <form action="/gen/<%= char.id %>?_method=DELETE" method="POST">
-            <button type="submit" class="btn btn-danger"><strong>&times</strong></button>
-        </form>
-        <form action="/" method="GET">
-            <button type="submit" class="btn btn-info"><strong>&#10003</strong></button>
-        </form>
-    </div>
+    <% if (user.email == char.creatorEmail) { %>
+        <div>
+            <!-- <form action="/gen/<%= char._id %>/deleteImage?_method=DELETE" method="POST"> -->
+                <form action="/gen/<%= char._id %>/deleteImage" method="POST">
+                <button type="submit" class="btn btn-danger"><strong>&times</strong></button>
+            </form>
+            <form action="/gen/<%= char._id %>/save" method="POST">
+                <button type="submit" class="btn btn-info"><strong>&#10003</strong></button>
+            </form>
+        </div>
+    
+    <% } %>
 
-    <form action="" method="POST">
+    <form action="/gen/<%= char._id %>" method="POST">
             <label>Rate the image (0-10)</label>
         <div>
             <input type="number" name="rating" min="0" max="10" required>
@@ -49,16 +53,22 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th scope="col">User</th>
                 <th scope="col"><strong>Comment</strong></th>
                 <th scope="col"><strong>Rating (<%= total %>)</strong></th>
+                <th scope="col"><strong>Option</strong></th>
             </tr>
         </thead>
         <% if (char.reviews.length) { %>
             <% char.reviews.forEach(function(c) { %>
         <tbody>
             <tr>
+                <td><%= c.reviewerName %></td>
                 <td><%= c.comment %></td>
                 <td><%= c.rating %></td>
+                <% if (user.email == char.creatorEmail) { %>
+                <td><a href="/gen/<%= char._id %>/deleteReview">Delete</a></td>
+                <% } %>
             </tr>
         </tbody>
         <% }) %>
