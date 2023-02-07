@@ -7,7 +7,7 @@ Describe the picture you have in mind and CharGenAI will paint your vision for y
 
 ## Features:
 * Sign in/up with your google account to use the app and check out the sample images created with our app by scrolling down the page.
-<img src='../public/assets/homepages' width='800'/>
+<img src='..\public\assets\homepages' width='800'/>
 
 * Give a description of what image you're thinking of and press the "Generate my vision" button.
 <img src='../public/assets/userprompt' width='800'/>
