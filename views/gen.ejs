@@ -18,7 +18,6 @@
 
     <% if (user.email == char.creatorEmail) { %>
         <div>
-            <!-- <form action="/gen/<%= char._id %>/deleteImage?_method=DELETE" method="POST"> -->
                 <form action="/gen/<%= char._id %>/deleteImage" method="POST">
                 <button type="submit" class="btn btn-danger"><strong>&times</strong></button>
             </form>
@@ -56,7 +55,7 @@
                 <th scope="col">User</th>
                 <th scope="col"><strong>Comment</strong></th>
                 <th scope="col"><strong>Rating (<%= total %>)</strong></th>
-                <th scope="col"><strong>Option</strong></th>
+                <th scope="col"><strong>Options</strong></th>
             </tr>
         </thead>
         <% if (char.reviews.length) { %>
@@ -66,8 +65,8 @@
                 <td><%= c.reviewerName %></td>
                 <td><%= c.comment %></td>
                 <td><%= c.rating %></td>
-                <% if (user.email == char.creatorEmail) { %>
-                <td><a href="/gen/<%= char._id %>/deleteReview">Delete</a></td>
+                <% if (user._id.equals(c.reviewer._id)) { %>
+                <td><a href="/gen/<%= char._id %>/showReview">Update </a><a href="">Delete</a></td>
                 <% } %>
             </tr>
         </tbody>

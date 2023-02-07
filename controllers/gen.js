@@ -70,11 +70,49 @@ function deleteReview(req, res, next) {
     });
 };
 
+function showReview(req, res, next) {
+    Char.findById(req.params.id, function(err, char) {
+        char.reviews.forEach(function(r) {
+            if (r.reviewer._id.equals(char.creator._id)) {
+                res.render('reviewPage', {
+                    r,
+                    char
+                });
+            } else {
+                res.redirect('/');
+            };
+        });
+    });
+};
+
+function updateReview(req, res, next) {
+    console.log('req.body', req.body);
+    console.log('req.params', req.params);
+    console.log('req.user', req.user);
+
+    Char.findById(req.params.id, function(err, char) {
+        char.reviews.forEach(function(r) {
+            if (r.reviewer._id.equals(char.creator._id)) {
+                req.body.rating = Number(req.body.rating);
+                req.body.reviewer = req.user;
+                req.body.reviewerName = req.user.name;
+                char.reviews.pop();
+                char.reviews.unshift(req.body);
+            };
+        });
+        char.save(function(err) {
+            res.redirect('/');
+        });
+    });
+};
+
 module.exports = {
     generate,
     show,
     saveReview,
     saveImage,
     deleteChar,
-    deleteReview
+    showReview,
+    deleteReview,
+    updateReview
 };
