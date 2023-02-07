@@ -84,7 +84,7 @@ nav>a:hover {
 }
 
 .parallax {
-    background-image: url("../assets/canvas_1.jpg");
+    background-image: url("../assets/canvas.jpg");
     height: 300px;
     width: 80%;
     margin: auto;
