@@ -10,7 +10,7 @@ Describe the picture you have in mind and CharGenAI will paint your vision for y
 <img src='..\public\assets\homepages' width='800'/>
 
 * Give a description of what image you're thinking of and press the "Generate my vision" button.
-<img src='../public/assets/userprompt' width='800'/>
+<img src="../public/assets/userprompt" width="800"/>
 
 * View the generated image and decide if you want to keep it or not. Also feel free to leave a review (rate the image and leave us your thoughts).
 <img src='../public/assets/yellowsubmarine' width='800'/>
