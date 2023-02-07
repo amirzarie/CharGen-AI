@@ -82,3 +82,29 @@ nav>a {
 nav>a:hover {
     color: grey;
 }
+
+.parallax {
+    background-image: url("../assets/book.jpg");
+    height: 300px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#indexText {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: black; 
+    font-size: 20px;
+    margin: 10px 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 30em;
+    animation: type 4s steps(100, end); 
+}
+  
+@keyframes type { 
+    from { width: 0; } to { width: 500px;}
+} 
