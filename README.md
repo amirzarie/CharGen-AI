@@ -14,6 +14,6 @@ Link to app: https://git.heroku.com/chargenai.git
 <img src="../public/assets/userprompt.png" width="800"/>
 
 * View the generated image and decide if you want to keep it or not. Also feel free to leave a review (rate the image and leave us your thoughts).
-<img src='../public/assets/yellowsubmarine.png' width='800'/>
+<img src='public\assets\yellowsubmarine.png' width='800'/>
 
 # Thank you and I hope you enjoy the app!
