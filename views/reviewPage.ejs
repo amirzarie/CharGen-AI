@@ -9,7 +9,7 @@
   <title>Review</title>
   </head>
   <body>
-    <form action="/gen/<%= char._id %>/updateReview" method="POST">
+      <form action="/gen/<%= char._id %>/updateReview" method="POST">
         <label>Rate the image (0-10)</label>
     <div>
         <input type="number" name="rating" min="0" max="10" value="<%= r.rating %>" required>

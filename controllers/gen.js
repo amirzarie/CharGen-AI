@@ -62,11 +62,13 @@ function deleteChar(req, res, next) {
 };
 
 function deleteReview(req, res, next) {
-    console.log("req.params.id: ", req.params.id);
-    console.log("req.user: ", req.user);
-    Char.find({ "_id": req.params.id }, function(err, char) {
-        console.log(char.reviews);
-        res.redirect(`/gen/${req.params.id}`);
+    Char.findOne({ 'reviews._id': req.params.id }, function(err, char) {
+        const reviewSubdoc = char.reviews.id(req.params.id);
+        if (!reviewSubdoc.reviewer._id.equals(req.user._id)) return res.redirect('/');
+        reviewSubdoc.remove();
+        char.save(function(err) {
+            res.redirect(`/gen/${char._id}`);
+        });
     });
 };
 
@@ -78,18 +80,12 @@ function showReview(req, res, next) {
                     r,
                     char
                 });
-            } else {
-                res.redirect('/');
             };
         });
     });
 };
 
 function updateReview(req, res, next) {
-    console.log('req.body', req.body);
-    console.log('req.params', req.params);
-    console.log('req.user', req.user);
-
     Char.findById(req.params.id, function(err, char) {
         char.reviews.forEach(function(r) {
             if (r.reviewer._id.equals(char.creator._id)) {

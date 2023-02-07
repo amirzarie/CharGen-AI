@@ -16,7 +16,7 @@
         <a href="/"><img src="<%= char.imageURL %>" alt="<%= char.prompt %>"></a>
     </div>
 
-    <% if (user.email == char.creatorEmail) { %>
+    <% if (char.creator._id.equals(user.id)) { %>
         <div>
                 <form action="/gen/<%= char._id %>/deleteImage" method="POST">
                 <button type="submit" class="btn btn-danger"><strong>&times</strong></button>
@@ -28,16 +28,33 @@
     
     <% } %>
 
-    <form action="/gen/<%= char._id %>" method="POST">
-            <label>Rate the image (0-10)</label>
-        <div>
-            <input type="number" name="rating" min="0" max="10" required>
-        </div>
-          <div>
-            <textarea name="comment" placeholder="Give us your thoughts on this image ..." rows="3" cols="50" required></textarea>
+        <% if (char.reviews.length) { %>
+            <% char.reviews.forEach(function(r) { %>
+                <% if (r.reviewer._id.equals(user._id)) { return } else { %>
+                    <form action="/gen/<%= char._id %>" method="POST">
+                        <label>Rate the image (0-10)</label>
+                    <div>
+                        <input type="number" name="rating" min="0" max="10" required>
+                    </div>
+                      <div>
+                        <textarea name="comment" placeholder="Give us your thoughts on this image ..." rows="3" cols="50" required></textarea>
+                        </div>
+                      <button type="submit" class="btn btn-success">Save review</button>
+                </form>
+            <% } }) } %>
+
+        <% if (!char.reviews.length) { %>
+            <form action="/gen/<%= char._id %>" method="POST">
+                <label>Rate the image (0-10)</label>
+            <div>
+                <input type="number" name="rating" min="0" max="10" required>
             </div>
-          <button type="submit" class="btn btn-success">Save review</button>
-    </form>
+              <div>
+                <textarea name="comment" placeholder="Give us your thoughts on this image ..." rows="3" cols="50" required></textarea>
+                </div>
+              <button type="submit" class="btn btn-success">Save review</button>
+            </form>
+        <% } %>
 
     <div id="reviewDiv">
         <% let total = 'NA'; %>
@@ -66,7 +83,10 @@
                 <td><%= c.comment %></td>
                 <td><%= c.rating %></td>
                 <% if (user._id.equals(c.reviewer._id)) { %>
-                <td><a href="/gen/<%= char._id %>/showReview">Update </a><a href="">Delete</a></td>
+                <td>
+                    <a href="/gen/<%= char._id %>/showReview">Update </a>
+                    <a href="/gen/<%= c._id %>/deleteReview">Delete </a>
+                </td>
                 <% } %>
             </tr>
         </tbody>

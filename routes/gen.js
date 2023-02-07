@@ -9,5 +9,6 @@ router.post('/:id/save', genCtrl.saveImage);
 router.post('/:id/deleteImage', genCtrl.deleteChar);
 router.get('/:id/showReview', genCtrl.showReview);
 router.post('/:id/updateReview', genCtrl.updateReview);
+router.get('/:id/deleteReview', genCtrl.deleteReview);
 
 module.exports = router;
