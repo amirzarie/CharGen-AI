@@ -4,7 +4,7 @@
 
 Welcome to CharGenAI, a social media platform for AI (and semi-AI) generated content!
 Describe the picture you have in mind and CharGenAI will paint your vision for you. You can also leave reviews (rate/comment) on the published work to share your thoughts.
-Link to app: https://git.heroku.com/chargenai.git
+Link to app: https://chargenai.herokuapp.com/
 
 ## Features:
 * Sign in/up with your google account to use the app and check out the sample images created with our app by scrolling down the page.
