@@ -8,10 +8,10 @@ Link to app: https://git.heroku.com/chargenai.git
 
 ## Features:
 * Sign in/up with your google account to use the app and check out the sample images created with our app by scrolling down the page.
-<img src='../public/assets/homepages.png' width='800'/>
+<img src='public\assets\homepage.png' width='800'/>
 
 * Give a description of what image you're thinking of and press the "Generate my vision" button.
-<img src="../public/assets/userprompt.png" width="800"/>
+<img src="public\assets\userprompt.png" width="800"/>
 
 * View the generated image and decide if you want to keep it or not. Also feel free to leave a review (rate the image and leave us your thoughts).
 <img src='public\assets\yellowsubmarine.png' width='800'/>
