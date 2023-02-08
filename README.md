@@ -22,6 +22,8 @@ Link to app: https://chargenai.herokuapp.com/
 * mongoDB, mongoose
 * Google-OAuth
 * Heroku
+* Bootstrap
+* DALL.E 2 API
 
 ## Link to Trello:
 * https://trello.com/invite/b/stWpqZE0/ATTI58ad2952d39eba742c14a448cead485c9AE0C6CE/project-2
